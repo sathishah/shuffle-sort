@@ -1,0 +1,260 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+		<link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet" id="fontawesome-css">
+		
+		<style type="text/css">
+			.cards {
+				margin: 0 auto;
+				width: 33%;
+				display: inline-block;
+				margin-left: -4px;
+				padding: 100px;
+				font-size: 40px;
+				border-radius: 0px;
+				color: #fff;
+			}
+			.cards:nth-child(1) {
+				background-color: #6F98A8
+			}
+			.cards:nth-child(2) {
+				background-color: #2B8EAD
+			}
+			.cards:nth-child(3) {
+				background-color: #2F454E
+			}
+			.cards:nth-child(4) {
+				background-color: #2B8EAD
+			}
+			.cards:nth-child(5) {
+				background-color: #2F454E
+			}
+			.cards:nth-child(6) {
+				background-color: #BFBFBF
+			}
+			.cards:nth-child(7) {
+				background-color: #BFBFBF
+			}
+			.cards:nth-child(8) {
+				background-color: #6F98A8
+			}
+			.cards:nth-child(9) {
+				background-color: #2F454E
+			}
+			
+			.btn{
+				width: 100%;
+				display: block;
+				margin-top: 20px;
+				background: #72C3DC;
+				border-color: #72C3DC;
+			}
+			
+			@media only screen and (max-width: 600px) {
+				.cards {
+					width: 100%;
+					display: block;
+					padding: 5px;
+					margin: 0 auto;
+					font-size: 14px;
+					color: #000;
+					margin-bottom: 10px;
+				}
+				
+				.sidebar{
+					display: block;
+					width: 100%;
+					padding: 10px;
+					text-align: center;
+				}
+				.btn {
+					width: 100px;
+					display: inline-block;
+					margin: 0 auto;
+				}
+				.cards:nth-child(1) {
+					background-color: #eee;
+					border: none;
+					border-left: 5px solid #6F98A8;
+					border-radius: 0px;
+				}
+				.cards:nth-child(2) {
+					background-color: #eee;
+					border: none;
+					border-left: 5px solid #2B8EAD;
+					border-radius: 0px;
+				}
+				.cards:nth-child(3) {
+					background-color: #eee;
+					border: none;
+					border-left: 5px solid #2F454E;
+					border-radius: 0px;
+				}
+				.cards:nth-child(4) {
+					background-color: #eee;
+					border: none;
+					border-left: 5px solid #2B8EAD;
+					border-radius: 0px;
+				}
+				.cards:nth-child(5) {
+					background-color: #eee;
+					border: none;
+					border-left: 5px solid #2F454E;
+					border-radius: 0px;
+				}
+				.cards:nth-child(6) {
+					background-color: #eee;
+					border: none;
+					border-left: 5px solid #BFBFBF;
+					border-radius: 0px;
+				}
+				.cards:nth-child(7) {
+					background-color: #eee;
+					border: none;
+					border-left: 5px solid #BFBFBF;
+					border-radius: 0px;
+				}
+				.cards:nth-child(8) {
+					background-color: #eee;
+					border: none;
+					border-left: 5px solid #6F98A8;
+					border-radius: 0px;
+				}
+				.cards:nth-child(9) {
+					background-color: #eee;
+					border: none;
+					border-left: 5px solid #2F454E;
+					border-radius: 0px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container-fluid">
+		
+			<h1 class="text-center">Shuffle and Sort</h1>
+		
+			<div class="row">
+                <div class="col-md-12">
+					<div class="row main-content">
+						<div class="col-sm-9 content">
+							<div class="cards card card-primary text-center">								
+								1
+							</div>
+							<div class="cards card card-primary text-center">
+								2
+							</div>
+							<div class="cards card card-primary text-center">
+								3
+							</div>
+							
+							<div class="cards card card-primary text-center">
+								4
+							</div>
+							<div class="cards card card-primary text-center">
+								5
+							</div>
+							<div class="cards card card-primary text-center">
+								6
+							</div>
+							
+							<div class="cards card card-primary text-center">
+								7
+							</div>
+							<div class="cards card card-primary text-center">
+								8
+							</div>
+							<div class="cards card card-primary text-center">
+								9
+							</div>
+						</div>
+						<div class="col-sm-3 sidebar">
+							<input type="button" class="btn btn-primary btn_shuffle" name="Shuffle" value="SHUFFLE" />
+							<input type="button" class="btn btn-primary btn_sort" name="Sort" value="SORT" />
+						</div>
+					</div>
+					<div class="text-center">
+						Shuffle and Sort by Sathish A H
+					</div>
+				</div>
+			</div>
+		<script src="https://code.jquery.com/jquery-latest.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				var viewportWidth = $(window).width();
+				var sidebar = $('.sidebar');
+				var content = $('.content');
+				
+				$(document).on('click', '.btn_shuffle', function() {
+					console.log('Clicking Shuffle');
+					var cardNumbers = [];
+
+					$('.cards').each(function() {
+						cardNumbers.push(this.innerHTML);
+					});
+
+					var theLength = cardNumbers.length - 1;
+					var toSwap;
+					var temp;
+
+					for (var i = theLength; i > 0; i--) {
+						toSwap = Math.floor(Math.random() * (i + 1));
+						temp = cardNumbers[i];
+						cardNumbers[i] = cardNumbers[toSwap];
+						cardNumbers[toSwap] = temp;
+					}
+
+					i = 0;
+
+					$('.cards').each(function() {
+						this.innerHTML = cardNumbers[i];
+						i++;
+					});
+				});
+
+				$(document).on('click', '.btn_sort', function() {
+					var cardNumbers = [];
+
+					$('.cards').each(function() {
+						cardNumbers.push(+this.innerHTML);
+					});
+
+					cardNumbers.sort();
+
+					i = 0;
+
+					$('.cards').each(function() {
+						this.innerHTML = cardNumbers[i];
+						i++;
+					});
+				});
+				
+				$(window).resize(function(event) {
+					viewportWidth = $(window).width();
+					$('.main-content').html('');
+					if (viewportWidth <=600) {
+						$('.main-content').append(sidebar);
+						$('.main-content').append(content);
+					} else {
+					$('.main-content').append(content);
+						$('.main-content').append(sidebar);
+					}
+				});
+				
+				$(window).load(function(event) {
+					viewportWidth = $(window).width();
+					$('.main-content').html('');
+					if (viewportWidth <=600) {
+						$('.main-content').append(sidebar);
+						$('.main-content').append(content);
+					} else {
+					$('.main-content').append(content);
+						$('.main-content').append(sidebar);
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
